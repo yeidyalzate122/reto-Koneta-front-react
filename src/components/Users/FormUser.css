@@ -1,0 +1,44 @@
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+#wrapperr {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    padding: 30px 40px;
+    color: azure;
+    
+}
+
+#wrapperr h1 {
+    text-align: center;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas iguales */
+    gap: 16px;
+    /* Espaciado entre columnas */
+    max-width: 600px;
+    /* Ajusta según necesites */
+    margin: auto;
+    /* Centrar el formulario */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    font-size: 14.5px;
+    padding: 20px;
+}
