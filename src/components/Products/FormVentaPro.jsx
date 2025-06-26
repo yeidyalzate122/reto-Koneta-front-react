@@ -40,6 +40,7 @@ const FormVentaPro = () => {
     const [severity, setSeverity] = useState('');
 
     const [tasaVisible, setTasaVisible] = useState(false);
+    const [franquiciaObligatoria, setfranquiciaObligatoria] = useState(false);
 
     const navigate = useNavigate();
 
@@ -47,10 +48,17 @@ const FormVentaPro = () => {
         const selectedValue = event.target.value;
         setTdTipoProducto(selectedValue);
         const selectedProduct = selectProducto.find(product => product.id_tipo_producto === selectedValue);
+        
         if (selectedProduct) {
+            setfranquiciaObligatoria(selectedProduct.tipo_producto === "Tarjeta de Credito")
             setTasaVisible(selectedProduct.tipo_producto === "Credito de Consumo" || selectedProduct.tipo_producto === "Libranza Libre Inversión");
+           
         } else {
+
+            setfranquiciaObligatoria(false)
             setTasaVisible(false);
+           
+
         }
     };
 
@@ -81,7 +89,7 @@ const FormVentaPro = () => {
             cupo: string().required("El campo es obligatorio").max(20, "El campo debe tener maximo 20 caracteres"),
             ...(tasaVisible ? { tasa: string().required("El campo es obligatorio") } : {}),
             idTipoProducto: string().required("El campo es obligatorio"),
-            idFranquicia: string().required("El campo es obligatorio"),
+            ...(franquiciaObligatoria ? { idFranquicia: string().required("El campo es obligatorio") } : {}),            
             fechaVenta: string().required("El campo es obligatorio"),
             idUsuario: string().required("El campo es obligatorio")
 
